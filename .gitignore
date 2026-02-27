@@ -1,0 +1,311 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Build outputs
+dist/
+build/
+out/
+lib/
+es/
+coverage/
+.turbo/
+.rollup.cache/
+
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+.next/
+.nuxt/
+.cache/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.staging.local
+.env.*.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+.project
+.classpath
+.settings/
+*.sublime-*
+*.sublime-workspace
+*.sublime-project
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+debug.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Testing
+coverage/
+.nyc_output/
+reports/
+junit.xml
+test-results/
+*.test.ts.snap
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+.cache/
+.temp/
+
+# Package manager specific
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.npmrc
+.yarnrc
+.pnpm-store/
+
+# OS generated files
+ehthumbs.db
+*.lnk
+*.app
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Docs generated files
+docs/api/
+docs/_build/
+docs/_site/
+docs/.vitepress/dist/
+docs/.vuepress/dist/
+
+# VS Code workspace
+*.code-workspace
+
+# Rollup
+.rollup.cache/
+
+# Jest
+jest-stare/
+junit.xml
+coverage/
+
+# ESLint
+.eslintcache
+
+# Prettier
+.prettiercache
+
+# Storybook
+storybook-static/
+*.storybook.log
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+cypress/results/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Sentry
+.sentryclirc
+
+# Vercel
+.vercel
+
+# Netlify
+.netlify
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variable files
+.env.test
+.env*.local
+
+# parcel-bundler cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Temporary folders
+tmp/
+temp/
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.test
+.env*.local
+
+# parcel-bundler cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build output
+.nuxt
+dist
+
+# rollup.js build output
+dist/
+es/
+lib/
+
+# TypeScript v1 declaration files
+typings/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.test
+.env*.local
+
+# parcel-bundler cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Temporary folders
+tmp/
+temp/
