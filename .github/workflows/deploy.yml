@@ -32,9 +32,7 @@ jobs:
 
       # Build demo only
       - name: Build demo
-        run: |
-          cd sheetra-demo
-          pnpm build
+        run: pnpm --filter sheetra-demo build
 
       # Deploy
       - name: Deploy
