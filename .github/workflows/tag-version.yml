@@ -52,3 +52,14 @@ jobs:
           git tag $VERSION
           git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/opencorex-org/sheetra.git
           git push origin $VERSION
+
+      - name: Create GitHub Release
+        if: env.EXISTS == 'false'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.VERSION }}
+          name: "Release ${{ env.VERSION }}"
+          body: |
+            Automated release for version ${{ env.VERSION }}.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
