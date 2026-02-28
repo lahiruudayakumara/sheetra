@@ -1,5 +1,5 @@
 import { Worksheet } from '../core/worksheet';
-import { Row } from '../core/row';
+// import { Row } from '../core/row';
 import { Cell } from '../core/cell';
 import { StyleBuilder } from '../core/styles';
 import { 
@@ -30,7 +30,9 @@ export class SectionBuilder {
    */
   addSection(config: SectionConfig): this {
     const section = new Section(this.worksheet, config, this.currentRow);
-    this.sections.set(config.title, section);
+    if (config.title !== undefined) {
+      this.sections.set(config.title, section);
+    }
     
     // Build the section
     this.currentRow = section.build();
@@ -61,9 +63,9 @@ export class SectionBuilder {
    * Create a section from data with automatic grouping
    */
   createFromData<T>(
-    title: string,
     data: T[],
     options: {
+      title: string;
       groupBy?: keyof T | ((item: T) => string);
       fields?: Array<keyof T | string>;
       fieldLabels?: Record<string, string>;
@@ -76,6 +78,7 @@ export class SectionBuilder {
     }
   ): this {
     const {
+      title,
       groupBy,
       fields = Object.keys(data[0] || {}) as Array<keyof T>,
       fieldLabels = {},
@@ -132,7 +135,6 @@ export class SectionBuilder {
    * Add a summary section (totals, averages, etc.)
    */
   addSummarySection(
-    title: string,
     data: any[],
     fields: string[],
     functions: Array<'sum' | 'average' | 'count' | 'min' | 'max'>,
@@ -140,9 +142,10 @@ export class SectionBuilder {
       level?: number;
       style?: CellStyle;
       showPercentage?: boolean;
+      label?: string;
     }
   ): this {
-    const { level = 0, style, showPercentage = false } = options || {};
+    const { level = 0, style, showPercentage = false, label = 'Summary' } = options || {};
 
     // Calculate summary values
     const summary: Record<string, any> = {};
@@ -180,9 +183,9 @@ export class SectionBuilder {
     const summaryRow = this.worksheet.createRow();
     summaryRow.setOutlineLevel(level + 1);
 
-    // Add title cell
-    const titleCell = summaryRow.createCell(`${title}:`);
-    titleCell.setStyle(
+    // Add label cell
+    const labelCell = summaryRow.createCell(`${label}:`);
+    labelCell.setStyle(
       StyleBuilder.create()
         .bold(true)
         .italic(true)
@@ -214,17 +217,17 @@ export class SectionBuilder {
    * Add a hierarchical section (tree structure)
    */
   addHierarchicalSection<T>(
-    title: string,
     items: T[],
     childrenAccessor: (item: T) => T[],
     options?: {
+      title?: string;
       level?: number;
       fields?: Array<keyof T>;
       collapsed?: boolean;
       showCount?: boolean;
     }
   ): this {
-    const { level = 0, fields, collapsed = true, showCount = true } = options || {};
+    const { title = 'Hierarchy', level = 0, fields, collapsed = true, showCount = true } = options || {};
 
     const buildHierarchy = (items: T[], currentLevel: number): SectionConfig[] => {
       return items.map(item => {
@@ -250,7 +253,7 @@ export class SectionBuilder {
     const hierarchySections = buildHierarchy(items, level + 1);
 
     return this.addSection({
-      title,
+      title: title,
       level,
       collapsed,
       data: [],
@@ -262,7 +265,6 @@ export class SectionBuilder {
    * Add a pivot-like section with multiple dimensions
    */
   addPivotSection(
-    title: string,
     data: any[],
     dimensions: {
       rows: string[];
@@ -404,7 +406,6 @@ export class SectionBuilder {
    * Add a timeline section (grouped by date periods)
    */
   addTimelineSection(
-    title: string,
     data: any[],
     dateField: string,
     period: 'day' | 'week' | 'month' | 'quarter' | 'year',
@@ -432,7 +433,7 @@ export class SectionBuilder {
 
       // Add trend indicators if requested
       if (showTrends && periodData.length > 0) {
-        const prevPeriod = this.getPreviousPeriod(periodKey, period, grouped);
+        const prevPeriod = this.getPreviousPeriod(periodKey, grouped);
         if (prevPeriod) {
           const trend = this.calculateTrend(periodData, prevPeriod, fields?.[0] || 'value');
           section.summary = {
@@ -594,7 +595,6 @@ export class SectionBuilder {
 
   private getPreviousPeriod(
     currentKey: string,
-    period: string,
     groups: Record<string, any[]>
   ): any[] | null {
     const keys = Object.keys(groups).sort();
@@ -763,7 +763,7 @@ class Section {
 
       // Add summary row if configured
       if (this.config.summary) {
-        this.addSummaryRow(currentRow);
+        this.addSummaryRow();
         currentRow++;
       }
     }
@@ -814,7 +814,7 @@ class Section {
   /**
    * Add summary row (totals, averages, etc.)
    */
-  private addSummaryRow(rowIndex: number): void {
+  private addSummaryRow(): void {
     if (!this.config.summary) return;
 
     const summaryRow = this.worksheet.createRow();

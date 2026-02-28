@@ -1,7 +1,7 @@
 import { Workbook } from '../core/workbook';
 import { Worksheet } from '../core/worksheet';
-import { Row } from '../core/row';
-import { Cell } from '../core/cell';
+// import { Row } from '../core/row';
+// import { Cell } from '../core/cell';
 import { StyleBuilder } from '../core/styles';
 import { SectionConfig, ExportOptions } from '../types';
 
@@ -103,7 +103,7 @@ export class ExportBuilder {
   }
 
   setColumnWidths(widths: number[]): this {
-    widths.forEach((width, index) => {
+    widths.forEach((width) => {
       this.currentSheet.createColumn(width);
     });
     return this;
@@ -124,7 +124,7 @@ export class ExportBuilder {
       });
     });
 
-    maxLengths.forEach((length, index) => {
+    maxLengths.forEach((length) => {
       this.currentSheet.createColumn(Math.max(length, 10)); // Minimum width 10
     });
 

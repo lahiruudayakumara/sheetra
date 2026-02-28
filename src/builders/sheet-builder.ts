@@ -1,18 +1,18 @@
 import { Worksheet } from '../core/worksheet';
 import { Row } from '../core/row';
-import { Cell } from '../core/cell';
+// import { Cell } from '../core/cell';
 import { Column } from '../core/column';
 import { StyleBuilder } from '../core/styles';
 import { 
   CellStyle, 
   CellData, 
-  RowData, 
-  ColumnData, 
-  MergeCell,
-  FreezePane,
+//   RowData, 
+//   ColumnData, 
+//   MergeCell,
+//   FreezePane,
   PrintOptions,
   HeaderFooter,
-  AutoFilter,
+// 
   TableConfig,
   DataValidation,
   ConditionalFormatRule,
@@ -26,7 +26,6 @@ import {
 export class SheetBuilder {
   private worksheet: Worksheet;
   private currentRow: number = 0;
-  private currentCol: number = 0;
 
   /**
    * Create a new SheetBuilder instance
@@ -59,7 +58,7 @@ export class SheetBuilder {
   addHeaderRow(headers: string[], style?: CellStyle): this {
     const row = this.createRow();
     
-    headers.forEach((header, index) => {
+    headers.forEach((header) => {
       const cellStyle = style || StyleBuilder.create()
         .bold(true)
         .backgroundColor('#F0F0F0')
@@ -314,7 +313,7 @@ export class SheetBuilder {
     summaryRow.setOutlineLevel(level + 1);
     
     // Create summary cells
-    fields.forEach((field, index) => {
+    fields.forEach((_, index) => {
       if (index === 0) {
         summaryRow.createCell(
           'Group Summary',
@@ -325,7 +324,7 @@ export class SheetBuilder {
         );
       } else {
         const numericValues = items
-          .map(item => this.getNestedValue(item, field))
+          .map(item => this.getNestedValue(item, fields[index]))
           .filter(val => typeof val === 'number');
         
         if (numericValues.length > 0) {
@@ -359,7 +358,7 @@ export class SheetBuilder {
   ): this {
     const row = this.createRow();
     
-    fields.forEach((field, index) => {
+    fields.forEach((_, index) => {
       if (index === 0) {
         row.createCell(
           label,
@@ -810,7 +809,6 @@ export class SheetBuilder {
   reset(): this {
     this.worksheet = new Worksheet(this.worksheet.getName());
     this.currentRow = 0;
-    this.currentCol = 0;
     return this;
   }
 
