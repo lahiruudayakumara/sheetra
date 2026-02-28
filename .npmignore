@@ -1,0 +1,113 @@
+# Source files
+src/
+test/
+examples/
+docs/
+coverage/
+.nyc_output/
+
+# Configuration files
+tsconfig.json
+tsconfig.*.json
+rollup.config.js
+jest.config.js
+jest.config.ts
+.eslintrc
+.eslintrc.json
+.prettierrc
+.prettierrc.json
+.gitignore
+.npmignore
+.editorconfig
+.travis.yml
+.github/
+.husky/
+.lintstagedrc
+.commitlintrc.json
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+*.code-workspace
+
+# CI/CD files
+.gitlab-ci.yml
+circle.yml
+appveyor.yml
+azure-pipelines.yml
+Jenkinsfile
+
+# Docker files
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Tests
+test/
+__tests__/
+__mocks__/
+jest.config.js
+jest.setup.js
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+test-results/
+coverage/
+.nyc_output/
+
+# Documentation source
+docs/
+examples/
+*.md
+!README.md
+!LICENSE
+!CHANGELOG.md
+
+# Build tools
+webpack.config.js
+vite.config.ts
+rollup.config.js
+gulpfile.js
+Gruntfile.js
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Temporary files
+*.log
+*.tmp
+*.temp
+.cache/
+.temp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Package manager specific
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.npmrc
+.yarnrc
+
+# Source maps
+*.js.map
+*.css.map
+
+# Keep these files
+!README.md
+!LICENSE
+!CHANGELOG.md
+!CONTRIBUTING.md
+!CODE_OF_CONDUCT.md
+
+# Distribution files (these are included by default)
+# dist/
+# lib/
+# es/
+# build/
