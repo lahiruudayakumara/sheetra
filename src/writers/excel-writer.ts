@@ -7,7 +7,7 @@ import { DateFormatter } from '../formatters/date-formatter';
 import { CSVWriter, JSONWriter } from '../writers';
 
 export class ExcelWriter {
-    static async write(workbook: Workbook, options: ExportOptions): Promise<Blob> {
+    static async write(workbook: Workbook, _options: ExportOptions): Promise<Blob> {
         const data = this.generateExcelData(workbook);
         const buffer = this.createExcelFile(data);
         const uint8Buffer = buffer instanceof Uint8Array ? buffer : new Uint8Array(buffer);
