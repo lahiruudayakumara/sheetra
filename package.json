@@ -1,6 +1,6 @@
 {
   "name": "sheetra",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Powerful Excel/CSV/JSON export library with zero dependencies",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -56,12 +56,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/opencorex-org/sheetra.git"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/opencorex-org/sheetra/issues"
   },
-  "homepage": "",
+  "homepage": "https://github.com/opencorex-org/sheetra#readme",
   "engines": {
     "node": ">=12.0.0"
   },
